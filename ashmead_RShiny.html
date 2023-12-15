@@ -1235,6 +1235,7 @@ Robert Ashmead
 <li>Originally released in 2012</li>
 <li>Developed by Joe Cheng of RStudio/Posit</li>
 <li>Recently Shiny has been extended to be used with Python as well</li>
+<li>R Shiny 1.8.0 released in November 2023</li>
 </ul>
 </section>
 <section id="plan-for-today" class="slide level2">
@@ -1243,7 +1244,7 @@ Robert Ashmead
 <li>Basic Pieces of the App</li>
 <li>Building An App</li>
 <li>Building an App Round 2 - Reactive Expressions</li>
-<li>How Can Other People See My Dashboards (aka hosting)?</li>
+<li>How Can Other People See My Apps (aka hosting)?</li>
 <li>Accessibility</li>
 <li>A Tour of Advanced Features: Interactive tables, plots, and maps</li>
 </ol>
@@ -1962,7 +1963,7 @@ A couple of observations:
 <section id="alternative-r-packages-that-have-been-developed-for-ui-layouts" class="slide level2">
 <h2>Alternative R Packages that have been developed for UI Layouts</h2>
 <h3 id="shinydashboard"><a href="https://rstudio.github.io/shinydashboard/index.html">shinydashboard</a></h3>
-<p>A three-part dashboard design (header, sidebar, body) with some options to change colors and themes.</p>
+<p>A three-part app design (header, sidebar, body) with some options to change colors and themes.</p>
 <h3 id="shiny.fluent"><a href="https://github.com/Appsilon/shiny.fluent">shiny.fluent</a></h3>
 <p>Uses a different UI framework than the Bootstrap framework we’ve been using (Fluent). More complex, but looks very sharp! Try <code>shiny.fluent::runExample(&quot;dashboard&quot;)</code></p>
 </section>
@@ -2049,21 +2050,21 @@ A couple of observations:
 <p>Example 10</p>
 </section></section>
 <section>
-<section id="how-can-other-people-see-my-dashboards-aka-hosting" class="title-slide slide level1 center">
-<h1>How Can Other People See My Dashboards (aka hosting)?</h1>
+<section id="how-can-other-people-see-my-apps-aka-hosting" class="title-slide slide level1 center">
+<h1>How Can Other People See My Apps (aka hosting)?</h1>
 
 </section>
-<section id="running-dashboards-locally-vs.-on-a-server" class="slide level2">
-<h2>Running dashboards locally vs. on a server</h2>
+<section id="running-apps-locally-vs.-on-a-server" class="slide level2">
+<h2>Running apps locally vs. on a server</h2>
 <ul>
-<li>In order for other people to use your dashboard they need to be able to access it from the computer running it</li>
+<li>In order for other people to use your app they need to be able to access it from the computer running it</li>
 <li>Generally speaking, a personal computer is not setup to do this</li>
 <li>Instead, this is a task for a server (your own or someone else’s)</li>
 </ul>
 </section>
 <section id="option-1---open-source-shiny-server" class="slide level2">
 <h2>Option 1 - Open Source Shiny Server</h2>
-<p>Posit’s <a href="https://posit.co/download/shiny-server/">open source shiny server</a> is way to freely host a dashboard on your own server (assuming you have one).</p>
+<p>Posit’s <a href="https://posit.co/download/shiny-server/">open source shiny server</a> is way to freely host a app on your own server (assuming you have one).</p>
 <ul>
 <li>Positives
 <ul>
@@ -2078,7 +2079,7 @@ A couple of observations:
 </section>
 <section id="option-2---posit-connect" class="slide level2">
 <h2>Option 2 - Posit Connect</h2>
-<p>Posit has a paid service for hosting dashboards on your own server called <a href="https://posit.co/products/enterprise/connect/">Posit Connect</a>. This includes additional features as well (APIs, password-protection, etc.).</p>
+<p>Posit has a paid service for hosting apps on your own server called <a href="https://posit.co/products/enterprise/connect/">Posit Connect</a>. This includes additional features as well (APIs, password-protection, etc.).</p>
 <ul>
 <li>Positives
 <ul>
@@ -2134,7 +2135,7 @@ A couple of observations:
 <h2>Accessibility Guidelines</h2>
 <p>*Credit to <a href="https://neilhatfield.github.io">Neil J. Hatfield</a> and his 2023 JSM talk.</p>
 <ul>
-<li>Shiny allows a way to create interactive web applicaitons without having to know how HTML, CSS, JavaScript, or how websites work more generally.</li>
+<li>Shiny allows a way to create interactive web applications without having to know how HTML, CSS, JavaScript, or how websites work more generally.</li>
 <li>The downside is we might not always know the best practices for creating applications that meet web accessibility standards</li>
 <li><a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines (WCAG) 2.1</a></li>
 </ul>
@@ -2225,7 +2226,7 @@ A couple of observations:
 <h2>Datatable Extensions</h2>
 <p>There are a lot of options for formatting and downloads:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36" data-code-line-numbers="4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>cal_county_rankings_2023 <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb36" data-code-line-numbers="8-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>cal_county_rankings_2023 <span class="sc">%&gt;%</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a>     <span class="fu">select</span>(Health_Indicator_Desc, County,</span>
 <span id="cb36-3"><a href="#cb36-3"></a>             Rate.Percentage, Age.Adjusted_Rate) <span class="sc">%&gt;%</span></span>
 <span id="cb36-4"><a href="#cb36-4"></a>     <span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>,</span>
@@ -2293,7 +2294,7 @@ A couple of observations:
 </section>
 <section id="html" class="slide level2">
 <h2>HTML</h2>
-<p>We’ve seen that we can easily write text into our dashboard, but what if need to format and customize that text (different sizes, bold, italic, underline, spacing, linebreaks, etc.)? We’ll need to learn/use a little bit of HTML to accomplish this.</p>
+<p>We’ve seen that we can easily write text into our app, but what if we need to format and customize that text (different sizes, bold, italic, underline, spacing, linebreaks, etc.)? We’ll need to learn/use a little bit of HTML to accomplish this.</p>
 </section>
 <section id="what-is-an-html-tag" class="slide level2">
 <h2>What is an HTML “tag” ?</h2>
@@ -2401,6 +2402,41 @@ A couple of observations:
 [181] &quot;wbr&quot;                </code></pre>
 </div>
 </div>
+</section>
+<section id="downloads-ui" class="slide level2">
+<h2>Downloads, UI</h2>
+<ul>
+<li>On the UI side we can use a <code>downloadButton</code> or a <code>downloadLink</code>. The <code>class</code> argument and the <code>icon</code> argument allows for customization.</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">downloadButton</span>(</span>
+<span id="cb41-2"><a href="#cb41-2"></a>  outputId,</span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="at">label =</span> <span class="st">&quot;Download&quot;</span>,</span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="at">class =</span> <span class="cn">NULL</span>,</span>
+<span id="cb41-5"><a href="#cb41-5"></a>  <span class="at">icon =</span> shiny<span class="sc">::</span><span class="fu">icon</span>(<span class="st">&quot;download&quot;</span>)</span>
+<span id="cb41-6"><a href="#cb41-6"></a>)</span>
+<span id="cb41-7"><a href="#cb41-7"></a></span>
+<span id="cb41-8"><a href="#cb41-8"></a><span class="fu">downloadLink</span>(outputId,</span>
+<span id="cb41-9"><a href="#cb41-9"></a>    <span class="at">label =</span> <span class="st">&quot;Download&quot;</span>,</span>
+<span id="cb41-10"><a href="#cb41-10"></a>    <span class="at">class =</span> <span class="cn">NULL</span></span>
+<span id="cb41-11"><a href="#cb41-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="downloads-server" class="slide level2">
+<h2>Downloads, Server</h2>
+<ul>
+<li><p>On the Server side we’ll use the <code>downloadHandler</code> function to tell R what we want the user to download.</p></li>
+<li><p>Note in the <code>content</code> argument this needs to be a function of a single argument, <code>file</code>.</p></li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>output<span class="sc">$</span>savemap_png <span class="ot">=</span> <span class="fu">downloadHandler</span>(</span>
+<span id="cb42-2"><a href="#cb42-2"></a>   <span class="at">filename =</span> <span class="cf">function</span>(){</span>
+<span id="cb42-3"><a href="#cb42-3"></a>        <span class="co">#this could be a function of reactive inputs or a static name</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>   },</span>
+<span id="cb42-5"><a href="#cb42-5"></a>   <span class="at">content =</span> <span class="cf">function</span>(file){ <span class="co">#always leave file here</span></span>
+<span id="cb42-6"><a href="#cb42-6"></a>        <span class="co">#the part in here should write your object you want downloaded to the directory &quot;file&quot;</span></span>
+<span id="cb42-7"><a href="#cb42-7"></a>        <span class="co">#for example</span></span>
+<span id="cb42-8"><a href="#cb42-8"></a>        <span class="fu">write.csv</span>(<span class="fu">data</span>(), file)</span>
+<span id="cb42-9"><a href="#cb42-9"></a>   },</span>
+<span id="cb42-10"><a href="#cb42-10"></a>   <span class="at">contentType =</span> <span class="st">&#39;text/csv&#39;</span> <span class="co">#this argument is optional</span></span>
+<span id="cb42-11"><a href="#cb42-11"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="design-tips" class="slide level2">
 <h2>Design Tips</h2>
